@@ -1038,8 +1038,9 @@ _("This problem has been reported, but a <i>Bugzilla</i> ticket has not"
     def on_gac_open_directory_activate(self, action):
         selection = self._get_selected(self.lss_problems)
         if selection:
-            Gio.app_info_launch_default_for_uri(
-                                'file://' + selection[0].problem_id, None)
+            if os.path.exists(selection[0].problem_id):
+                Gio.app_info_launch_default_for_uri(
+                                    'file://' + selection[0].problem_id, None)
         self._builder.menu_problem_item.popdown()
         self._builder.menu_multiple_problems.popdown()
 
@@ -1047,8 +1048,9 @@ _("This problem has been reported, but a <i>Bugzilla</i> ticket has not"
         selection = self._get_selected(self.lss_problems)
         if selection:
             #pylint: disable=E1101
-            (Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-                .set_text(selection[0].problem_id, -1))
+            if os.path.exists(selection[0].problem_id):
+                (Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+                    .set_text(selection[0].problem_id, -1))
         self._builder.menu_problem_item.popdown()
         self._builder.menu_multiple_problems.popdown()
 
