@@ -85,6 +85,7 @@ GNOME_ABRT_VERSION=`cat ./gnome-abrt-version`
 AC_SUBST(PYTHON_CFLAGS)
 AC_SUBST(GNOME_ABRT_VERSION)
 
+PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.63.0])
 PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.10.0])
 PKG_CHECK_MODULES([LIBREPORT_GTK], [libreport-gtk > 2.0.19-3])
 PKG_CHECK_MODULES([ABRT_GUI], [abrt_gui > 2.1.6])
@@ -104,7 +105,6 @@ AC_CONFIG_FILES([
     src/Makefile
     src/gnome_abrt/Makefile
     src/gnome_abrt/wrappers/Makefile
-    src/gnome_abrt/url/Makefile
     po/Makefile.in
 ])
 

@@ -1,4 +1,4 @@
-SUBDIRS = wrappers url
+SUBDIRS = wrappers
 
 gnome_abrtexecdir = $(pyexecdir)/gnome_abrt
 
